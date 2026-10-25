@@ -1,6 +1,6 @@
 /**
- * Contrato comun para cualquier equipo de cocina de la cafeteria.
- * El preparador de bebidas depende solo de esta interfaz, no de clases concretas.
+ * Contrato que todo equipo de cocina debe cumplir para poder
+ * ser usado por el preparador de bebidas.
  */
 public interface EquipoCocina {
     void encender();

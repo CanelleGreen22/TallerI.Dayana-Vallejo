@@ -1,6 +1,4 @@
 public class Licuadora implements EquipoCocina {
-    private static final int VELOCIDAD_MAXIMA = 5;
-
     private boolean encendida = false;
     private int velocidad = 1;
 
@@ -18,17 +16,14 @@ public class Licuadora implements EquipoCocina {
 
     @Override
     public void preparar() {
-        if (!encendida) {
-            System.out.println("La licuadora esta apagada, no se puede licuar.");
-            return;
+        if (encendida) {
+            System.out.println("Licuando ingredientes a velocidad " + velocidad + ".");
         }
-        System.out.println("Licuando ingredientes a velocidad " + velocidad + ".");
     }
 
-    // En la licuadora la "intensidad" es la velocidad del motor
     @Override
     public void ajustarIntensidad() {
-        if (encendida && velocidad < VELOCIDAD_MAXIMA) {
+        if (encendida && velocidad < 5) {
             velocidad++;
             System.out.println("Velocidad de la licuadora: " + velocidad);
         }

@@ -1,12 +1,6 @@
-/**
- * Equipo nuevo agregado despues del refactor. Basta con implementar
- * EquipoCocina para que PreparadorBebidasV2 lo use sin modificarlo.
- */
 public class Exprimidor implements EquipoCocina {
-    private static final int PRESION_MAXIMA = 3;
-
     private boolean encendido = false;
-    private int presion = 1;
+    private int velocidad = 1;
 
     @Override
     public void encender() {
@@ -22,18 +16,16 @@ public class Exprimidor implements EquipoCocina {
 
     @Override
     public void preparar() {
-        if (!encendido) {
-            System.out.println("El exprimidor esta apagado, no se puede hacer jugo.");
-            return;
+        if (encendido) {
+            System.out.println("Exprimiendo frutas a velocidad " + velocidad + ".");
         }
-        System.out.println("Exprimiendo fruta con presion " + presion + ".");
     }
 
     @Override
     public void ajustarIntensidad() {
-        if (encendido && presion < PRESION_MAXIMA) {
-            presion++;
-            System.out.println("Presion del exprimidor: " + presion);
+        if (encendido && velocidad < 3) {
+            velocidad++;
+            System.out.println("Velocidad del exprimidor: " + velocidad + ".");
         }
     }
 }

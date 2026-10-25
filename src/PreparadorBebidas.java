@@ -1,16 +1,15 @@
 /**
- * Version original (V1). Funciona, pero esta acoplada a exactamente tres equipos:
- * para agregar un cuarto hay que modificar atributos, constructor y metodos.
+ * Preparador refactorizado: depende de la interfaz EquipoCocina y recibe
+ * los equipos por constructor (inyeccion de dependencias), en lugar de
+ * crear una Cafetera y una Licuadora con new.
  */
 public class PreparadorBebidas {
-    private final EquipoCocina equipo1;
-    private final EquipoCocina equipo2;
-    private final EquipoCocina equipo3;
+    private EquipoCocina equipo1;
+    private EquipoCocina equipo2;
 
-    public PreparadorBebidas(EquipoCocina equipo1, EquipoCocina equipo2, EquipoCocina equipo3) {
+    public PreparadorBebidas(EquipoCocina equipo1, EquipoCocina equipo2) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
-        this.equipo3 = equipo3;
     }
 
     public void prepararDesayuno() {
@@ -19,8 +18,6 @@ public class PreparadorBebidas {
         equipo1.preparar();
         equipo2.encender();
         equipo2.preparar();
-        equipo3.encender();
-        equipo3.preparar();
         System.out.println("Desayuno listo.");
     }
 
@@ -28,7 +25,6 @@ public class PreparadorBebidas {
         System.out.println("Apagando equipos...");
         equipo1.apagar();
         equipo2.apagar();
-        equipo3.apagar();
         System.out.println("Equipos apagados.");
     }
 }

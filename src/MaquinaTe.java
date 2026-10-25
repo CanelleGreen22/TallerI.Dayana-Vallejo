@@ -1,13 +1,11 @@
 public class MaquinaTe implements EquipoCocina {
-    private static final int INTENSIDAD_MAXIMA = 3;
-
     private boolean encendida = false;
     private int intensidad = 1;
 
     @Override
     public void encender() {
         encendida = true;
-        System.out.println("Maquina de te encendida.");
+        System.out.println("Maquina de te encendida, calentando agua.");
     }
 
     @Override
@@ -18,25 +16,17 @@ public class MaquinaTe implements EquipoCocina {
 
     @Override
     public void preparar() {
-        if (!encendida) {
-            System.out.println("La maquina de te esta apagada, no se puede preparar te.");
-            return;
+        if (encendida) {
+            System.out.println("Preparando te con intensidad " + intensidad + ".");
         }
-        System.out.println("Calentando agua e infusionando hierbas con intensidad " + intensidad + ".");
     }
 
+    // El te admite menos niveles que el cafe para no amargarse
     @Override
     public void ajustarIntensidad() {
-        if (encendida && intensidad < INTENSIDAD_MAXIMA) {
+        if (encendida && intensidad < 3) {
             intensidad++;
-            System.out.println("Intensidad del te: " + intensidad);
-        }
-    }
-
-    // Metodo propio de la maquina de te: no forma parte de la interfaz
-    public void agregarHierbasFrutales() {
-        if (encendida) {
-            System.out.println("Agregando hierbas frutales al te.");
+            System.out.println("Intensidad del te: " + intensidad + ".");
         }
     }
 }

@@ -1,27 +1,14 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
- * Version refactorizada. Recibe cualquier cantidad de equipos a traves de la
- * interfaz EquipoCocina, asi que un equipo nuevo no obliga a cambiar esta clase
- * (principio abierto/cerrado e inversion de dependencias).
+ * Segunda version del preparador: en lugar de dos equipos fijos recibe
+ * una lista y controla a todos los equipos que contenga.
  */
 public class PreparadorBebidasV2 {
-    private final List<EquipoCocina> equipos;
+    private List<EquipoCocina> equipos;
 
     public PreparadorBebidasV2(List<EquipoCocina> equipos) {
-        Objects.requireNonNull(equipos, "La lista de equipos no puede ser nula");
-        // Copia defensiva: cambios externos a la lista no afectan al preparador
-        this.equipos = new ArrayList<>(equipos);
-    }
-
-    public void agregarEquipo(EquipoCocina equipo) {
-        equipos.add(Objects.requireNonNull(equipo, "El equipo no puede ser nulo"));
-    }
-
-    public int cantidadEquipos() {
-        return equipos.size();
+        this.equipos = equipos;
     }
 
     public void prepararDesayuno() {
@@ -31,13 +18,6 @@ public class PreparadorBebidasV2 {
             equipo.preparar();
         }
         System.out.println("Desayuno listo.");
-    }
-
-    public void subirIntensidadATodos() {
-        System.out.println("Subiendo intensidad de los equipos...");
-        for (EquipoCocina equipo : equipos) {
-            equipo.ajustarIntensidad();
-        }
     }
 
     public void apagarTodo() {
